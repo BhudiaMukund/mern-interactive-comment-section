@@ -1,26 +1,35 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CommentPage, LoginPage, LogoutPage } from "./pages";
+import { CommentPage, LoginPage, AppLayout } from "./pages";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
-import { loader as commentPageLoader } from "./pages/CommentPage";
+import { loader as appLayoutLoader } from "./pages/AppLayout";
+import { loader as loginPageLoader } from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <CommentPage />,
-    loader: commentPageLoader,
+    element: <AppLayout />,
+    loader: appLayoutLoader,
+    children: [
+      {
+        index: true,
+        element: <CommentPage />,
+      },
+    ],
   },
   {
-    path: "/login",
+    path: "login",
     element: <LoginPage />,
-  },
-  {
-    path: "/logout",
-    element: <LogoutPage />,
+    loader: loginPageLoader,
   },
 ]);
 
 const App = () => {
-  return <RouterProvider router={router}>App</RouterProvider>;
+  return (
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
+      <RouterProvider router={router} />
+    </GoogleOAuthProvider>
+  );
 };
 
 export default App;

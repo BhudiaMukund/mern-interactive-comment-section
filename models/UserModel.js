@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  username: String,
-  googleId: String,
+  username: { type: String, required: true },
+  googleId: { type: String, required: true },
+  profilePicture: { type: String, required: true },
 });
 
 export default mongoose.model("User", UserSchema);
