@@ -4,6 +4,9 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import { loader as appLayoutLoader } from "./pages/AppLayout";
 import { loader as loginPageLoader } from "./pages/LoginPage";
+import { loader as commentPageLoader } from "./pages/CommentPage";
+
+import { action as commentPageAction } from "./pages/CommentPage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +17,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <CommentPage />,
+        loader: commentPageLoader,
+        action: commentPageAction,
       },
     ],
   },

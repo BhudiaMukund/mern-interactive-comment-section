@@ -19,5 +19,31 @@
 body {
   width: 100%;
   min-height: 100vh;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
+  background: var(--Very-light-gray);
+}
+
+.btn {
+  border: none;
+  outline: none;
+  font-size: inherit;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.btn-theme {
+  background: var(--Moderate-blue);
+  text-transform: uppercase;
+  padding: 12px 25px;
+  border-radius: 6px;
+  color: var(--White);
+  font-weight: 500;
+  font-size: 14px;
 }

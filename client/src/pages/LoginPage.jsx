@@ -41,6 +41,9 @@ const LoginPage = () => {
           toast.error("Login failed");
         }}
         useOneTap
+        theme="filled_black"
+        size="large"
+        shape="pill"
       />
     </Wrapper>
   );
@@ -56,4 +59,9 @@ const Wrapper = styled.main`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+
+  @media only screen and (max-width: 475px) {
+    justify-content: start;
+    padding: 64px 30px;
+  }
 `

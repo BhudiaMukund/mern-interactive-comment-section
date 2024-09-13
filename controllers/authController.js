@@ -15,7 +15,6 @@ export const login = async (req, res) => {
       audience: process.env.GOOGLE_CLIENT_ID,
     });
     const payload = ticket.getPayload();
-    console.log(payload.email);
     googleId = payload.sub;
     profilePicture = payload.picture;
     username = payload.name;
@@ -60,7 +59,6 @@ export const login = async (req, res) => {
       .status(StatusCodes.CREATED)
       .json({ msg: "User logged in successfully" });
   } catch (error) {
-    console.log(error);
     throw new UnauthenticatedError("Invalid Authentication");
   }
 };
